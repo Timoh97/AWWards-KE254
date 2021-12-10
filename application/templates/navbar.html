@@ -7,7 +7,7 @@
   <title>Document</title>
 </head>
 <body>
-  {% load bootstrap4 %}
+  
   <nav class="navbar navbar-default" style="padding: 1em;">
     <div class="container-fluid">
       <img src="https://cdn-icons-png.flaticon.com/512/819/819590.png" width="50" alt="">
@@ -33,37 +33,30 @@
       </div>
 
       {% if user.is_authenticated %}
-
-    <li class="dropdown btn btn-default">
-        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"
-            style="font-weight: 700;"><i class="far fa-user"></i>
-
-        </a>
-        <ul class="dropdown-menu" role="menu" style="font-weight: 700; text-decoration: none;">
-
-            <li class="nav-item">
-                <a class="nav-link" href="/admin" style=" color: black;"
-                    style="font-weight: 700;">Dashboard</a>
-            </li>
-            <li>
-                <a class="btn btn-default" href="/accounts/register" style="font-weight: 700;">Register</a>
-            </li>
-            <li>
-
-                <a class="btn btn-default" href="">Change
-                    Password</a>
-            </li>
-            <li>
-                <a class="btn btn-default" href="/logout" style="font-weight: 700;">Log Out</a>
-            </li>
+        <ul>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                <a href="{% url 'home' %}">Home</a>
+              </li>
+              <li>
+                <a href="/accounts/password/change">Change Password</a>
+              </li>
+              <li>
+                <a href="">My Profile</a>
+              </li>
+              <li>
+                <a href="/accounts/login">Logout</a>
+              </li>
+            </ul>
+          </li>
         </ul>
-    </li>
-
-    {% else %}
-    <li>
-        <a class="btn btn-default" href="/accounts/login" style="font-weight: 700;">Login</a>
-    </li>
-    {% endif %}
+      {%else%}
+        <li>
+          <a href="/accounts/login" class="btn btn-default">Login</a>
+        </li>
+      {%endif%}
 <img src="https://cdn-icons-png.flaticon.com/512/3176/3176367.png" width="50" alt="">
     </div>
   </nav>
