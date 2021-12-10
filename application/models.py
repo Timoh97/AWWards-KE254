@@ -9,10 +9,11 @@ from cloudinary.models import CloudinaryField
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# profile of the user.
 class Profile(models.Model):
   profile_photo= CloudinaryField('image')
   bio = models.TextField()
+  contact = models.CharField(max_length=30)
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   
   # save profile method
@@ -26,30 +27,36 @@ class Profile(models.Model):
   def __str__(self):
     return self.bio
 
-class Image(models.Model):
-  image = models.CloudinaryField('image')
-  image_name = models.CharField(max_length=30)
-  image_caption = models.TextField()
-  profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+
+
+class Project(models.Model):
+  image = CloudinaryField('image')
+  name = models.CharField(max_length=30)
+  description = models.TextField()
+  location = models.TextField()
+  category = models.TextField()
+  url = models.URLField(blank=True)
   date_posted = models.DateTimeField(auto_now=True)
+  user = models.OneToOneField(User, on_delete=models.CASCADE,null=True)
+  
   
   # Save image method
-  def save_image(self):
+  def save_project(self):
     self.save()
     
   # Get all images method
   @classmethod
-  def get_all_images(cls):
-    all_images=cls.objects.all()
-    return all_images
+  def get_all_project(cls):
+    all_project=cls.objects.all()
+    return all_project
   
   def __str__(self):
-    return self.image_name
+    return self.name
   
 class Like(models.Model):
   like=models.IntegerField()
-  image = models.ForeignKey(Image, on_delete=models.CASCADE)
+  project = models.ForeignKey(Project, on_delete=models.CASCADE)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
   
   def __str__(self):
