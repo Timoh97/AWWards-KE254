@@ -1,30 +1,36 @@
 {% load bootstrap4 %}
 {% load static %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    {% if title %}
-  
-    <title>{{title}}</title>
-  
-    {% endif %}
-  
-    {% block style %}
-      {% bootstrap_css %}
-    {% endblock %}
-  </head>
-  <body>
-    {% block content%}
 
+<head>
+    <meta charset="utf-8">
+
+    <title>Account</title>
+    <!-- favico -->
+    <link rel="shortcut icon" href="">
+
+    {% block styles %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css'%}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     {% endblock %}
-  
+
+</head>
+
+<body>
+    <!-- content -->
+    {% block content %}
+
+    {%endblock%}
+
+    
+
+    <!-- scripts -->
     {% block scripts %}
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      {% bootstrap_javascript %}
+    {% bootstrap_javascript %}
     {% endblock %}
-  </body>
+
+</body>
+
 </html>
