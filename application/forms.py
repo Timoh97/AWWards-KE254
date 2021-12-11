@@ -5,7 +5,7 @@ from django import forms
 
 class PostProjectForm (ModelForm):
     class Meta:
-        model=project
+        
         fields = (
             'image',
             'description',
