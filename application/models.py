@@ -32,7 +32,7 @@ class Profile(models.Model):
 
 class Project(models.Model):
   image = CloudinaryField('image')
-  name = models.CharField(max_length=30)
+  name = models.TextField(max_length=30)
   description = models.TextField()
   location = models.TextField()
   category = models.TextField()
@@ -54,20 +54,20 @@ class Project(models.Model):
   def __str__(self):
     return self.name
   
-class Like(models.Model):
-  like=models.IntegerField()
-  project = models.ForeignKey(Project, on_delete=models.CASCADE)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
+# class Like(models.Model):
+#   like=models.IntegerField()
+#   project = models.ForeignKey(Project, on_delete=models.CASCADE, default='DEFAULT VALUE')
+#   user = models.ForeignKey(User, on_delete=models.CASCADE)
   
-  def __str__(self):
-    return self.like
+#   def __str__(self):
+#     return self.like
   
   
-class Comment(models.Model):
-  comment_message = models.TextField()
-  posted_on = models.DateTimeField(auto_now=True)
-  user = models.ForeignKey(User, on_delete=models.CASCADE)
-  image = models.ForeignKey(Image, on_delete=models.CASCADE)
+# class Comment(models.Model):
+#   comment_message = models.TextField()
+#   posted_on = models.DateTimeField(auto_now=True)
+#   user = models.ForeignKey(User, on_delete=models.CASCADE)
+#   project = models.ForeignKey(Project, on_delete=models.CASCADE, default='DEFAULT VALUE')
   
-  def __str__(self):
-    return self.user.username
+#   def __str__(self):
+#     return self.user.username
