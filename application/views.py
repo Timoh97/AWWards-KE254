@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 from . models import Profile, Project
-from . forms import UpdateProfileForm
+from . forms import UpdateProfileForm,ProfileForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.http  import HttpResponse,HttpResponseRedirect
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -31,10 +32,28 @@ def update_profile(request,id):
     form = UpdateProfileForm(instance=profile)
     if request.method == "POST":
             form = UpdateProfileForm(request.POST,request.FILES,instance=profile)
-            if form.is_valid():      
+            if form.is_valid():  
+                
                 profile = form.save(commit=False)
                 profile.save()
                 return redirect('profile' ,username=user.username) 
             
     ctx = {"form":form}
-    return render(request, 'update_profile.html',{"form":form})
+    return render(request, 'update_profile.html', ctx)
+
+
+
+def create_profile(request):
+    current_user = request.user
+    title = "Create Profile"
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user = current_user
+            profile.save()
+        return HttpResponseRedirect('/')
+
+    else:
+        form = ProfileForm()
+    return render(request, 'create_profile.html', {"form": form, "title": title})

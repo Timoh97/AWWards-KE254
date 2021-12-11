@@ -20,3 +20,10 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('bio', 'profile_photo','contact')
+        
+        
+        
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        filed = ('bio', 'profile_photo','contact')
