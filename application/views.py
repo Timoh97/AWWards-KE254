@@ -3,27 +3,28 @@ from django.http  import HttpResponse
 from . models import Profile, Project
 from . forms import UpdateProfileForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/accounts/login/')
 def index(request):
     
     return render(request, 'index.html')
 
-
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     project = Project.objects.filter(user_id=current_user.id).first()
     return render(request,"profile.html",{'profile':profile,'project':project})
 
-
+@login_required(login_url='/accounts/login/')
 def user_project(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
     return render(request,"profile.html",{'profile':profile})
 
-
+@login_required(login_url='/accounts/login/')
 def update_profile(request,id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user = user)
