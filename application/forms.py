@@ -5,7 +5,7 @@ from django import forms
 
 class PostProjectForm (ModelForm):
     class Meta:
-        
+        model=Project
         fields = (
             'image',
             'description',
@@ -14,3 +14,9 @@ class PostProjectForm (ModelForm):
             'url',
             'name'   
         )
+        
+        
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('bio', 'profile_photo','contact')
