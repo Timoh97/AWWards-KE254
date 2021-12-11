@@ -42,7 +42,7 @@ def update_profile(request,id):
     return render(request, 'update_profile.html', ctx)
 
 
-
+@login_required(login_url='/accounts/login/')
 def create_profile(request):
     current_user = request.user
     title = "Create Profile"
