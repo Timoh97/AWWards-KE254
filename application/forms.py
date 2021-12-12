@@ -14,8 +14,7 @@ class PostProjectForm (ModelForm):
             'url',
             'name'   
         )
-        
-        
+         
 class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile

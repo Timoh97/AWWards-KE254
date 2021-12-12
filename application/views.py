@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 from . models import Profile, Project
-from . forms import UpdateProfileForm,ProfileForm
+from . forms import UpdateProfileForm,ProfileForm, PostProjectForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http  import HttpResponse,HttpResponseRedirect
@@ -57,3 +57,16 @@ def create_profile(request):
     else:
         form = ProfileForm()
     return render(request, 'create_profile.html', {"form": form, "title": title})
+
+
+@login_required(login_url='/accounts/login/')
+def upload(request):
+    if request.method == "POST":
+        form = PostProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.save()
+        return redirect('/')
+    else:
+        form = PostProjectForm()
+    return render(request, 'project.html', {"form": form})
