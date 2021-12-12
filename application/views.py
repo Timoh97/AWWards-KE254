@@ -9,8 +9,9 @@ from django.http  import HttpResponse,HttpResponseRedirect
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
+    upload = Project.objects.all().order_by('-id')
     
-    return render(request, 'index.html')
+    return render(request, 'index.html',{'upload':upload})
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
@@ -69,4 +70,4 @@ def upload(request):
         return redirect('/')
     else:
         form = PostProjectForm()
-    return render(request, 'project.html', {"form": form})
+    return render(request, 'upload.html', {"form": form})

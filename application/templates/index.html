@@ -31,5 +31,29 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <div class="row">
+    {% for uploads in upload %}
+    <div class="col-md-6">
+        
+        <div class="card-group">
+            <div class="card">
+                <p>{{pros.user}}</p>
+                <img class="card-img-top" src="{{uploads.image.url}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{uploads.name}}</h5>
+                    <p class="card-text">{{uploads.description}}</p>
+                    <p class="card-text">{{uploads.category}}</p>
+                    <a href="{{uploads.url}}">{{uploads.url}}</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{uploads.date_posted|date}}</small>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
