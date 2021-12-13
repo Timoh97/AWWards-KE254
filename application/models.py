@@ -62,20 +62,31 @@ class Project(models.Model):
         return projects
       
   @classmethod
-  def search_by_project_name(cls,search):
-      projects = cls.objects.filter(project_name__icontains=search)
-      return projects
+  def search_image(cls,search_term):
+       image = cls.objects.filter(name__icontains=search_term)
+       return image
 
-  
+  # @classmethod
+  # def search_image(cls,search):
+  #       image = cls.objects.filter(name__icontains=search)
+  #       return image
   
 def __str__(self):
       return self.name
   
   
-@classmethod
-def search_image(cls,search_term):
-        image = cls.objects.filter(name__icontains=search_term)
-        return image
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    design_rate = models.IntegerField(default=0, blank=True, null=True)
+    usability_rate = models.IntegerField(default=0, blank=True, null=True)
+    content_rate = models.IntegerField(default=0, blank=True, null=True)
+    avg_rate = models.IntegerField(default=0, blank=True, null=True)
+
+    def _str_(self):
+        return self.user.username
+  
+
 # class Like(models.Model):
 #   like=models.IntegerField()
 #   project = models.ForeignKey(Project, on_delete=models.CASCADE, default='DEFAULT VALUE')

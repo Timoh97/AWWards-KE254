@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http  import HttpResponse
-from . models import Profile, Project
+from . models import Profile, Project,Rating
 from . forms import UpdateProfileForm,ProfileForm, PostProjectForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -92,7 +92,7 @@ def search_results(request):
 
     if "search"in request.GET and request.GET["search"]:
         search_term = request.GET.get("search")
-        searched_images = Project.search_by_project_name(search_term)
+        searched_images = Project.search_image(search_term)
         message = f"{search_term}"
 
         return render(request, 'search.html',{"message":message,"images": searched_images})
@@ -100,3 +100,34 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+    
+    
+    
+@login_required(login_url='/accounts/login/')
+def rate(request,id):
+    if request.method == 'POST':
+        project = Project.objects.get(id = id)
+        current_user = request.user
+        design_rate = request.POST['design']
+        content_rate = request.POST['content']
+        usability_rate = request.POST['usability']
+
+        Rating.objects.create(
+            project=project,
+            user=current_user,
+            design_rate=design_rate,
+            usability_rate=usability_rate,
+            content_rate=content_rate,
+            avg_rate=round((float(design_rate)+float(usability_rate)+float(content_rate))/3,2),)
+
+        return render(request,"project.html",{"project":project})
+    else:
+        project = Project.objects.get(id = id) 
+        return render(request,"project.html",{"project":project})
+    
+    
+    
+def project_details(request, project_id):
+    project = Project.objects.get(id=project_id)
+    rating = Rating.objects.filter(project = project)
+    return render(request, "project.html", {"project": project, 'rating':rating})

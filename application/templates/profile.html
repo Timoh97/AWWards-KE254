@@ -67,13 +67,13 @@
     <h3>posts</h3>
         {% for image in images %}
         <div class="">
-            <h3>{{ image.photo_name }}</h3>
+            <h3>Name of photo: {{ image.photo_name }}</h3>
             
                 <div class="">
-                    <img src="{{ image.image.url }}" class="images" alt="Image">
+                   Visit the site: <img src="{{ image.image.url }}" class="images" alt="Image">
                 </div>
-                <p>{{ image.photo_caption }}</p>
-                <p>{{ image.posted_at }}</p>
+                <p>Caption: {{ image.photo_caption }}</p>
+                <p>Time posted: {{ image.posted_at }}</p>
 
         </div>
         {% empty %}
