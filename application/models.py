@@ -63,8 +63,8 @@ class Project(models.Model):
       
   @classmethod
   def search_image(cls,search_term):
-       image = cls.objects.filter(name__icontains=search_term)
-       return image
+       images = cls.objects.filter(category__icontains=search_term)
+       return images
 
   # @classmethod
   # def search_image(cls,search):

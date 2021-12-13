@@ -5,7 +5,7 @@
   <div class="row">
     {% if images %}
     
-      <h2 style="color: red;">Found <span style="color: blue;">{{ image|length }}</span> of searched item in category <span style="color: blue;">{{message}}</span></h2>
+      <h2 style="color: red;">Found <span style="color: blue;">{{ images|length }}</span> of searched item in category <span style="color: blue;">{{message}}</span></h2>
     {% else %}
       <h2> Found none of the images for the search category {{message}}</h2>
       
