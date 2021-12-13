@@ -60,12 +60,22 @@ class Project(models.Model):
   def get_all_projects_by_user(cls, user):
         projects = cls.objects.filter(user=user)
         return projects
+      
+  @classmethod
+  def search_by_project_name(cls,search):
+      projects = cls.objects.filter(project_name__icontains=search)
+      return projects
+
   
   
+def __str__(self):
+      return self.name
   
-  def __str__(self):
-    return self.name
   
+@classmethod
+def search_image(cls,search_term):
+        image = cls.objects.filter(name__icontains=search_term)
+        return image
 # class Like(models.Model):
 #   like=models.IntegerField()
 #   project = models.ForeignKey(Project, on_delete=models.CASCADE, default='DEFAULT VALUE')

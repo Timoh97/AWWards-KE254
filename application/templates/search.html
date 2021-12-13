@@ -1,0 +1,29 @@
+{% extends 'base.html'%} 
+{% block content %}
+<div class="container">
+
+  <div class="row">
+    {% if images %}
+    
+      <h2 style="color: red;">Found <span style="color: blue;">{{ image|length }}</span> of searched item in category <span style="color: blue;">{{message}}</span></h2>
+    {% else %}
+      <h2> Found none of the images for the search category {{message}}</h2>
+      
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+  {% if images %}
+    {% for image in images %}
+      <div class="" >
+        <img src="{{ image.image.url}}" width="200">
+        <p class="text" style="font-size: xx-large;">The picture is taken in <span style="color: blue;">{{image.location}}</span></p>
+        <p class="text" style="font-size: xx-large;">{{image.description}}</p>
+       
+      </div>
+    {% endfor %}
+  {% endif %}
+  </div>
+</div>
+{% endblock %}

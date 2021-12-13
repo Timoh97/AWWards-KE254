@@ -71,3 +71,32 @@ def upload(request):
     else:
         form = PostProjectForm()
     return render(request, 'upload.html', {"form": form})
+
+
+
+@login_required(login_url='login')
+def search_projects(request):
+    if 'project' in request.GET and request.GET["project"]:
+        search = request.GET.get("project")
+        projects = Project.search_by_project_name(search)
+        message = f"{search}"
+        context = {"projects":projects, 'search':search}
+        return render(request, 'result.html',context)
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'result.html',{"message":message})
+    
+    
+@login_required(login_url='login')
+def search_results(request):
+
+    if "search"in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        searched_images = Project.search_by_project_name(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"images": searched_images})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
