@@ -10,28 +10,22 @@
   {% block styles %}
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   {% endblock %}
-  <nav class="navbar navbar-default" style="padding: 1em;">
+  <nav class="navbar navbar-default" style="padding: 1.3em; background-color: #192841;">
     <div class="container-fluid">
-      <img src="https://cdn-icons-png.flaticon.com/512/819/819590.png" width="50" alt="">
+      <div style="background-color: white; padding: .2em;"><img src="https://cdn-icons-png.flaticon.com/512/819/819590.png" width="50" alt=""></div>
       <div class="col-sm-2 col-md-2 navbar-header">
         
-        <button class="btn btn-default"><a class="navbar-brand" href=""><a href="{% url 'index' %}">AWWards-KE254 CHAMP </a> </a></button>
+        <button class="btn btn-default" style="border: .5em solid beige; border-radius: 10px;"><a class="navbar-brand" href=""><a href="{% url 'index' %}">HOME </a> </a></button>
       </div>
 
       <div class="col-sm-3 col-md-3 navbar-right">
-        
-        <form class="navbar-form" role="search" action="">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search by category" name="search"> 
-            <div class="input-group-btn">
-              <button class="btn btn-dark" action="{% url 'search_results' %}" type="submit"><i class="glyphicon glyphicon-search"></i>Search</button>
-            </div>
-          </div>
-        </form>
+        <h2 style="color: white"><span>Kenya254</span> Awwards <span>GuinessBook</span></h2>
+
       </div>
-      <button class="btn btn-default"><a href="/accounts/profile/" class="col-sm-3 col-md-3 col-lg-3">Profile</a></button>
-      <div class="col-sm-3 col-md-3">
-        <button class="btn btn-default"><a href="/accounts/login" class="col-sm-3 col-md-3 col-lg-3">post+</a></button>
+      <button class="btn btn-default" style="border: .5em solid beige; border-radius: 10px;"><a href="/create_profile" class="col-sm-3 col-md-3 col-lg-3">Create Profile</a></button>
+      <button class="btn btn-default" style="border: .5em solid beige; border-radius: 10px;"><a href="/accounts/profile/" class="col-sm-3 col-md-3 col-lg-3">Profile</a></button>
+      <div class="col-sm-1 col-md-1">
+        <button class="btn btn-default" style="border: .5em solid beige; border-radius: 10px;"><a href="/search" class="col-sm-3 col-md-3 col-lg-3">Search</a></button>
       </div>
        
       {% if user.is_authenticated %}
@@ -59,7 +53,9 @@
           <a href="/accounts/login" class="btn btn-default">Login</a>
         </li>
       {%endif%}
-<img src="https://cdn-icons.flaticon.com/png/512/518/premium/518552.png?token=exp=1639234949~hmac=f8492e562c20c0830ac8475537874715" width="50" alt="">
+<div style="background-color: white; padding: .2em;">
+  <img src="https://cdn-icons.flaticon.com/png/512/518/premium/518552.png?token=exp=1639234949~hmac=f8492e562c20c0830ac8475537874715" width="50" alt="">
+</div>
     </div>
   </nav>
 </body>

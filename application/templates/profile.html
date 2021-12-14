@@ -4,7 +4,7 @@
 <br><br>
 <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="{% url 'index' %}">home</a>
+      <button btn btn-dark><a href="{% url 'index' %}">home</a></button>
     </li>
 </ul>
 <section class="profile container">
@@ -40,11 +40,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-12">
-        <div class = "" data-toggle ="modal" data-target="#showPicModal">
-            <button>Add Post</button>
-        </div>
-    </div>
+
     <div class="modal fade" id="showPicModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered mode" role="document">
           <div class="modal-content">
@@ -86,7 +82,7 @@
         {% endfor %}
         <div class="col-md-3">
             <form action="/upload/project/">
-                <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)"value="Post a Project" /> 
+                <input type="submit" style=" background :linear-gradient(to left,#3b0303,#d145fc)" value="Post a Project" /> 
             </form>
         </div>
 </div>
