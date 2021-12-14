@@ -5,6 +5,12 @@ from . forms import UpdateProfileForm,ProfileForm, PostProjectForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.http  import HttpResponse,HttpResponseRedirect
+# setting restframework
+from rest_framework import serializers
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .permissions import IsAdminOrReadOnly
+from .serializer import ProjectSerializer, ProfileSerializer
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -131,3 +137,18 @@ def project_details(request, project_id):
     project = Project.objects.get(id=project_id)
     rating = Rating.objects.filter(project = project)
     return render(request, "project.html", {"project": project, 'rating':rating})
+
+
+class ProjectList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self,request,format=None):
+        projects = Project.objects.all()
+        serializer = ProjectSerializer(projects,many=True)
+        return Response(serializer.data)
+
+class ProfileList(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get(self,request,format=None):
+        profiles = Profile.objects.all()
+        serializer = ProfileSerializer(profiles,many=True)
+        return Response(serializer.data)
