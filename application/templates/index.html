@@ -18,7 +18,7 @@
     </div>
   </div>
 </div>
-  <h3 class="text-center" style="color: brown;">Would like to rate? Click the image</h3>
+  <h3 class="text-center" style="color: brown;">Would like to rate? Click the <span style="color: blue;">image</span> or <span style="color: blue;">Blue button</span> </h3>
   <div class="row">
     
     {% for uploads in upload %}
@@ -26,19 +26,20 @@
         
         <div class="card-group">
             <div class="card">
-                <p>{{uploads.user}}</p>
+                <p class="text-center"><span style="color: maroon;">User: </span>{{uploads.user}}</p>
                 <a href="{% url 'project_details' uploads.id %}">
-                  <img src="{{ uploads.image.url }}" class="card-img-top responsive" alt="Personal">
+                  <img src="{{ uploads.image.url }}" class="card-img-top responsive" height="400" alt="Personal">
               </a>
                 <div class="card-body">
-                    <h5 class="card-title">Name: {{uploads.name}}</h5>
-                    <p class="card-text">Description: {{uploads.description}}</p>
-                    <p class="card-text">Category: {{uploads.category}}</p>
+                    <h5 style="font-style: oblique;" class="card-title">Name: <span style="color: maroon;">{{uploads.name}}</span></h5>
+                    <p style="font-style: oblique;" class="card-text">Description: <span style="color: maroon;">{{uploads.description}}</span></p>
+                    <p style="font-style: oblique;"  class="card-text">Category: <span style="color: maroon;">{{uploads.category}}</span></p>
                     <a href="{{uploads.url}}">{{uploads.url}}</a>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">Time of posting: {{uploads.date_posted|timesince}}</small>
+                    <small class="text-muted"><span style="color: #192841;">Time of posting: </span><span style="color: maroon;"> {{uploads.date_posted|timesince}}</span></small>
                 </div>
+                <button class="btn btn-primary" style="width: 13em;"><h4 style="color: white;" class="text-center"><a style="color: white;"  href="{% url 'project_details' uploads.id %}">Rate the project</a></h4></button>
             </div>
 
         </div>

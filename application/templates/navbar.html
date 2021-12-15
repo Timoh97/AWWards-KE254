@@ -31,7 +31,7 @@
       {% if user.is_authenticated %}
         <ul>
           <li class="dropdown">
-            <a href="/accounts/login" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">Account login <span class="caret"></span></a>
+            <button class="btn btn-default" style="border: .5em solid beige; border-radius: 10px;"><a href="/accounts/login" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false"> <span class="caret" style="color: white;"> login</span></a></button>
             <ul class="dropdown-menu" role="menu">
               <li>
                 <a href="{% url 'index' %}">Home</a>
@@ -54,7 +54,7 @@
         </li>
       {%endif%}
 <div style="background-color: white; padding: .2em;">
-  <img src="https://cdn-icons.flaticon.com/png/512/518/premium/518552.png?token=exp=1639234949~hmac=f8492e562c20c0830ac8475537874715" width="50" alt="">
+  <img src="https://cdn-icons-png.flaticon.com/512/4185/4185562.png" width="50" alt="">
 </div>
     </div>
   </nav>
