@@ -91,7 +91,8 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 SECRET_KEY = config('SECRET_KEY')
 MODE=config("MODE", default="dev")
-DEBUG = config('DEBUG', default=False)
+
+
 
 # development
 # if config('MODE')=="dev":
@@ -123,9 +124,9 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 cloudinary.config(
-    cloud_name =config('CLOUD_NAME'),
-    api_key=config('CLOUD_API_KEY'), 
-    api_secret=config('API_SECRET'),
+    cloud_name='dq4bcn8d2',
+    api_key='941563347348349', 
+    api_secret='7lOtGNkeYJ_zKGF92-O1hWxcY-k',
 )
 
 
