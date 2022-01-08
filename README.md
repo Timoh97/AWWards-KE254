@@ -55,7 +55,7 @@ HTML
   <img src="./screenshots/6.png" alt="screenshot" />
 
   <img src="./screenshots/7.png" alt="screenshot" />
-  
+
   <img src="./screenshots/8.png" alt="screenshot" />
 
 ## INSTALLATION AND SET UP
@@ -89,7 +89,7 @@ The project is working as required,fully responsive and has no known bugs.
 python manage.py server
 
 ## LIVE LINK
-
+https://awwardske.herokuapp.com/
 
  ## SUPPORT AND CONTACT
  * +254791417147
